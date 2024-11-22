@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 0px;
+    font-family: Roboto, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #cecece;
+}
+
+/* Header Section */
+#mainheader {
+    background-color: #3A8EFF;
+}
+
+#mainheader .logo {
+    margin: 10px;
+    height: 50px;
+}
+
+/* Main Section */
+.main-section {
+    background-color: #3A8EFF;
+    padding: 80px 15px 300px 25px; /* Top, Right, Bottom, Left */
+    margin: 0;
+}
+#main-heading {
+    color: white;
+    text-align: center;
+}
+#flight-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+#departure {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#return-date {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-right: 20px;
+}
+
+input {
+    width: 200px;          
+    height: 50px;       
+    font-size: 16px;  
+    padding: 10px;     
+    margin-bottom: 15px;
+    border: 1px solid #3A8EFF; 
+}
+
+.action-button {
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    appearance: none;
+    border-radius: 10px;
+    border: 1px solid #3A8EFF;
+    color: white;
+    background-color: #FA742D;
+}
+
+/* Contact Section */
+
+
+/* SEARCH */
+#top-section {
+    background-color: #3A8EFF;
+    padding: 80px 15px 200px 25px; /* Top, Right, Bottom, Left */
+    margin: 0;
+}
+
+#ticket-preview {
+background-color: white;
+border-radius: 20px;
+cursor: pointer;
+display: flex;
+min-height: 251px;
+min-width: 729px;
+position: relative;
+transition: box-shadow .2s linear, background-color .2s;
+width: 100%;
+}
