@@ -3,25 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <title>Flights On Lite - Search</title>
     <link rel="stylesheet" type="text/css" href="site.css">
 </head>
 <body>
-    <header>
-        <h1>Flight Search Results</h1>
-    </header>
-    <main>
-        <div>
-            <p id="departure-display"></p>
-            <p id="destination-display"></p>
-            <p id="departure-date-display"></p>
-            <p id="return-date-display"></p>
+<!-- Header -->
+<header id="mainheader">
+    <img src="assets/logo.png" alt="Flights on Lite Logo" class="logo">
+</header>
+<!-- /Header -->
+
+<!-- Search Param Section -->
+    <section class="search-param-section">
+            <div id="flight-search-form">
+                <input type="text" id="departure" name="departure" placeholder="From" required>
+                <input type="text" id="destination" name="destination" placeholder="To" required>
+                <input type="date" id="departure-date" name="departure-date" required placeholder="Departure On">
+                <input type="date" id="return-date" name="return-date" required placeholder="Return On">
+                <button id="search-button" class="action-button" type="button">Search</button>
+            </div>
+    </section>      
+<!-- /Search Param Section -->
+<section class="ticket-list">
+    <div class="cardContainer">
+        <div class="ticketPrice">
+            <div class="priceLabel">
+                $45
+            </div>
         </div>
-        <div id="results-container"></div>        
-    </main>
+        <div class="tripDetails">
+         <div class="tripDetailShell">
+            <div class="ticketDetailsOneWay">
+                <div id="departureDetailsOneWay" class="departureDetails">
+                    <div id="departureTimeOneWay" class="ticketTimeDisplay">13.45</div>
+                    <div id="departureCityOneWay" class="ticketCityDisplay">Louisville</div>
+                    <div id="departureDateOneWay" class="ticketDateDisplay">Oct 11</div>
+                </div>
+                <div class="durationDetails">
+                    <div id="durationTimeOneWay" class="durationTime">2 h</div>
+                    <div class="durationTimeLine"></div>
+                    <div class="durationAirportDisplay">
+                        <div id="departureAirportOneWay" class="airportName">SDF</div>
+                        <div id="arrivalAirportOneWay" class="airportName">LGA</div>
+                    </div>
+                </div>
+                <div class="arrivalDetails">
+                    <div id="arrivalTimeOneWay" class="ticketTimeDisplay">15.45</div>
+                    <div id="arrivalCityOneWay" class="ticketCityDisplay">New York City</div>
+                    <div id="arrivalDateOneWay" class="ticketDateDisplay">Oct 11</div>
+                </div>
+            </div>
+            <div class="ticketDetailsRoundTrip">
+                <div id="departureDetailsRoundTrip" class="departureDetails">
+                    <div id="departureTimeRoundTrip" class="ticketTimeDisplay">13.45</div>
+                    <div id="departureCityRoundTrip" class="ticketCityDisplay">Louisville</div>
+                    <div id="departureDateRoundTrip" class="ticketDateDisplay">Oct 11</div>
+                </div>
+                <div class="durationDetails">
+                    <div id="durationTimeRoundTrip" class="durationTime">2 h</div>
+                    <div class="durationTimeLine"></div>
+                    <div class="durationAirportDisplay">
+                        <div id="departureAirportRoundTrip" class="airportName">LGA</div>
+                        <div id="arrivalAirportRoundTrip" class="airportName">SDF</div>
+                    </div>
+                </div>
+                <div class="arrivalDetails">
+                    <div id="arrivalTimeRoundTrip" class="ticketTimeDisplay">21.19</div>
+                    <div id="arrivalCityRoundTrip" class="ticketCityDisplay">Louisville</div>
+                    <div id="arrivalDateRoundTrip" class="ticketDateDisplay">Oct 15</div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+
+ <!-- /Ticket List Section -->
+
+    <!-- Footer -->
     <footer>
-        <p>© Flights On Lite 2024</p>
-    </footer>
+        <div id="contact-section">
+            <p>Ana Bogdanova</p>
+            <a href="mailto:anabogdanova@gmail.com">Email Me</a>
+            <a href="https://github.com/anastasia-bogdanova">Find me on GitHub</a>
+            <a href="https://www.linkedin.com/in/anabogdanova/">Connect with me on LinkedIn</a>
+        </div>
+        <p id="footerCopyright">Copyright Flights On Lite 2024</p>
+     </footer>
+    <!-- /Footer -->
     <script src="results.js"></script>
 </body>
 </html>

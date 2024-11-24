@@ -53,8 +53,6 @@ input {
     height: 50px;       
     font-size: 16px;  
     padding: 10px;     
-    margin-bottom: 15px;
-    border: 1px solid #3A8EFF; 
 }
 
 .action-button {
@@ -73,21 +71,131 @@ input {
 /* Contact Section */
 
 
-/* SEARCH */
+/* SEARCH PAGE*/
 #top-section {
     background-color: #3A8EFF;
     padding: 80px 15px 200px 25px; /* Top, Right, Bottom, Left */
     margin: 0;
 }
+.search-param-section {
+    background-color: #3A8EFF;
+    padding: 20px 15px 20px 25px; /* Top, Right, Bottom, Left */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+.ticket-list {
+    background-color: #EFF1F4;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 2000px;
+    margin-bottom: 20px;
+}
 
-#ticket-preview {
-background-color: white;
-border-radius: 20px;
-cursor: pointer;
-display: flex;
-min-height: 251px;
-min-width: 729px;
-position: relative;
-transition: box-shadow .2s linear, background-color .2s;
-width: 100%;
+.cardContainer {
+    min-width: 929px;
+    min-height: 251px;
+    height: 100%;
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    margin: 20px;
+    transition: box-shadow .2s linear,background-color .2s;
+    cursor: pointer;
+}
+
+.cardContainer:hover {
+    box-shadow: 5px 5px 15px rgb(216, 216, 216);
+  }
+
+.ticketPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    border-right: 1px solid #CDD4DE;
+}
+
+.priceLabel {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #0B131D;
+}
+
+.tripDetails {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tripDetailShell {
+    height: 100px;
+    width: 90%;
+    height: 80%;
+
+}
+.ticketDetailsOneWay, .ticketDetailsRoundTrip  {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    padding: 12px 23px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    
+}
+
+.ticketDetailsOneWay {
+    border-bottom: 1px solid #CDD4DE;
+}
+
+.ticketTimeDisplay {
+    color: #0B131D;
+    font-size: large;
+}
+
+.ticketCityDisplay, .ticketDateDisplay {
+    color:#CDD4DE;
+    font-size: small;
+    
+}
+
+.ticketCityDisplay {
+    flex-grow: 1;
+    text-align: center;
+    min-width: 80px;
+}
+
+.airportName {
+    color: #3A8EFF;
+    font-weight: bold;
+}
+
+.durationDetails {
+    width: 60%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.durationTime {
+    color:#CDD4DE;
+    font-weight: bold;
+    font-size: medium;
+    align-items: center;
+
+}
+
+.durationTimeLine {
+    width: 100%;
+    height: 3px;
+    background-color:#CDD4DE;
+}
+.durationAirportDisplay {
+    display: flex;
+    justify-content: space-between;
 }
