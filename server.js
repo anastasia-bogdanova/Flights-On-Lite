@@ -1,12 +1,24 @@
+// Bring in the express server and create application
 const express = require('express');
+const appExpress = express(); 
 const axios = require('axios');
+
+// This is where I store my API key and Secret
 require('dotenv').config();
 
-const app = express();
-const PORT = 3000;
+// API endpoint to handle the search request
+app.post("/api/post", (req, res) => {
+    const searchData = req.body;
+    console.log("Received search data:", searchData);
+
+// Add logic for calling an external API
+    
+// Send a response back to the front-end
+    res.json({ message: "Data received successfully!", data: searchData });
+});
 
 // This is my route to get the access token
-app.get('/get-token', async (req, res) => {
+appExpress.get('/get-token', async (req, res) => {
   try {
     const response = await axios.post('https://test.api.amadeus.com/v1/security/oauth2/token', null, {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -22,7 +34,10 @@ app.get('/get-token', async (req, res) => {
   }
 });
 
+//Cofigure router so all routes are prefixed with /api/v1.It adds slash api to all my local routes
+appExpress.use('/api', router);
+
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+const server = appExpress.listen(3000, function () {
+  console.log('Server is running on http://localhost:3000');
 });
