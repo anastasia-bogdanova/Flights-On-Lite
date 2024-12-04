@@ -30,7 +30,7 @@ body {
     color: white;
     text-align: center;
 }
-#flight-search-form {
+.form {
     display: flex;
     justify-content: center;
     align-items: center;

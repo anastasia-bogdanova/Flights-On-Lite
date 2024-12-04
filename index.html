@@ -16,18 +16,76 @@
     <!-- Main Section -->
     <section class="main-section">
         <h1 id="main-heading">Where Can We Take You?</h1>
-        <div id="flight-search-form">
-            <input type="text" id="departure" name="departure" placeholder="From" required>
-            <input type="text" id="destination" name="destination" placeholder="To" required>
+        <form class="form">
+            <input type="text" id="departure" name="originLocationCode" placeholder="From" required>
+            <input type="text" id="destination" name="destinationLocationCode" placeholder="To" required>
             <input type="date" id="departure-date" name="departureDate" required placeholder="Departure On">
-            <input type="date" id="return-date" name="returnDate" required placeholder="Return On">
-            <button id="search-button" class="action-button" type="button">Search</button>
-        </div>
+            <input type="date" id="return-date" name="returnDate" placeholder="Return On">
+            <input type="number" id="adults" name="adults" min="1" value="1" required>
+            <button id="search-button" class="action-button" type="submit">Search</button>
+        </form>
         
         
     </section>      
-    <!-- Main Section -->
+    <!-- /Main Section -->
+ 
+  <section class="ticket-list">
+    <div class="cardContainer">
+        <div class="ticketPrice">
+            <div class="priceLabel">
+                $45
+            </div>
+        </div>
+        <div class="tripDetails">
+         <div class="tripDetailShell">
+            <div class="ticketDetailsOneWay">
+                <div id="departureDetailsOneWay" class="departureDetails">
+                    <div id="departureTimeOneWay" class="ticketTimeDisplay">13.45</div>
+                    <div id="departureCityOneWay" class="ticketCityDisplay">Louisville</div>
+                    <div id="departureDateOneWay" class="ticketDateDisplay">Oct 11</div>
+                </div>
+                <div class="durationDetails">
+                    <div id="durationTimeOneWay" class="durationTime">2 h</div>
+                    <div class="durationTimeLine"></div>
+                    <div class="durationAirportDisplay">
+                        <div id="departureAirportOneWay" class="airportName">SDF</div>
+                        <div id="arrivalAirportOneWay" class="airportName">LGA</div>
+                    </div>
+                </div>
+                <div class="arrivalDetails">
+                    <div id="arrivalTimeOneWay" class="ticketTimeDisplay">15.45</div>
+                    <div id="arrivalCityOneWay" class="ticketCityDisplay">New York City</div>
+                    <div id="arrivalDateOneWay" class="ticketDateDisplay">Oct 11</div>
+                </div>
+            </div>
+            <div class="ticketDetailsRoundTrip">
+                <div id="departureDetailsRoundTrip" class="departureDetails">
+                    <div id="departureTimeRoundTrip" class="ticketTimeDisplay">13.45</div>
+                    <div id="departureCityRoundTrip" class="ticketCityDisplay">Louisville</div>
+                    <div id="departureDateRoundTrip" class="ticketDateDisplay">Oct 11</div>
+                </div>
+                <div class="durationDetails">
+                    <div id="durationTimeRoundTrip" class="durationTime">2 h</div>
+                    <div class="durationTimeLine"></div>
+                    <div class="durationAirportDisplay">
+                        <div id="departureAirportRoundTrip" class="airportName">LGA</div>
+                        <div id="arrivalAirportRoundTrip" class="airportName">SDF</div>
+                    </div>
+                </div>
+                <div class="arrivalDetails">
+                    <div id="arrivalTimeRoundTrip" class="ticketTimeDisplay">21.19</div>
+                    <div id="arrivalCityRoundTrip" class="ticketCityDisplay">Louisville</div>
+                    <div id="arrivalDateRoundTrip" class="ticketDateDisplay">Oct 15</div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
 
+ <!-- /Ticket List Section -->
+
+    
     <!-- Footer -->
     <footer>
             <p>Ana Bogdanova</p>
@@ -37,6 +95,84 @@
         <p id="footerCopyright">Copyright Flights On Lite 2024</p>
      </footer>
     <!-- /Footer -->
-    <script src="scripts.js"></script>
+    
+    <script>
+    const token = 'wEvKeu9HiyAYeihXR1GF8QEv3V9k';
+
+        // Function to make GET requests to the backend with the required params
+const getAmadeusData = async (params) => {
+    const { keyword = "", page = 0, city = true, airport = true } = params;
+
+    // Determine the appropriate subType based on city and airport flags
+    const subTypeCheck = city && airport ? "CITY,AIRPORT" : city ? "CITY" : airport ? "AIRPORT" : "";
+
+    // Amadeus API requires at least one character in the search query
+    const searchQuery = keyword || "a";
+
+    // Build the URL with query parameters
+    const url = `https://test.api.amadeus.com/v1/api/airports/?keyword=${encodeURIComponent(searchQuery)}&page=${page}&subType=${encodeURIComponent(subTypeCheck)}`;
+
+    // Return an object with the fetch promise and a method to abort the request
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    // Initiate the GET request
+    const out = fetch(url, { signal })
+        .then(async (response) => {
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+            return response.json(); // Assuming the response is in JSON format
+        })
+        .catch((error) => {
+            if (error.name === "AbortError") {
+                console.log("Request aborted");
+            } else {
+                console.error("Error fetching data:", error);
+            }
+        });
+
+    // Return both the fetch promise and the abort controller
+    return { out, abort: () => controller.abort() };
+};
+
+
+// First select the form
+const formEl = document.querySelector('.form');
+formEl.addEventListener('submit', event => {
+    event.preventDefault();
+    //Get Data from the Form. It will take all the data from the form and will put it in the object
+    const formData = new FormData(formEl);
+    const params = new URLSearchParams(formData);
+
+      // Only append returnDate if it has a value, otherwise skip it
+  for (const [key, value] of formData.entries()) {
+        if (value) { // Check if the value is not empty
+            params.append(key, value);
+        }
+    }
+   
+        const getData = async () => {
+            try {
+                const res = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?${params.toString()}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+                renderTicketCards(data.data); // Render the tickets
+                if (!res.ok) {
+                    console.log(data.description);
+                    return;
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        getData();
+    });
+
+</script>
 </body>
 </html>
+
