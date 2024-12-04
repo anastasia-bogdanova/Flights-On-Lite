@@ -4,6 +4,7 @@
 
 body {
     margin-top: 0px;
+    margin-bottom: auto;
     font-family: Roboto, sans-serif;
     margin-left: auto;
     margin-right: auto;
@@ -29,6 +30,7 @@ body {
 #main-heading {
     color: white;
     text-align: center;
+    font-size: 36px;
 }
 .form {
     display: flex;
@@ -42,19 +44,24 @@ body {
     border-bottom-left-radius: 10px;
 }
 
-#return-date {
+#adults {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     margin-right: 20px;
 }
 
 input {
-    width: 200px;          
+    width: 180px;          
     height: 50px;       
     font-size: 16px;  
-    padding: 10px;     
+    padding: 10px;
+    border: none;
+    outline: none;  
+    margin-left: 3px;  
 }
-
+input:focus {
+    box-shadow: inset 0 0 0 2px #3A8EFF;
+}
 .action-button {
     width: 200px;
     height: 50px;
@@ -71,7 +78,7 @@ input {
 /* Contact Section */
 
 
-/* SEARCH PAGE*/
+/* SEARCH RESULT TILE*/
 #top-section {
     background-color: #3A8EFF;
     padding: 80px 15px 200px 25px; /* Top, Right, Bottom, Left */
@@ -91,7 +98,6 @@ input {
     display: flex;
     padding-top: 20px;
     padding-bottom: 2000px;
-    margin-bottom: 20px;
 }
 
 .cardContainer {
@@ -198,4 +204,51 @@ input {
 .durationAirportDisplay {
     display: flex;
     justify-content: space-between;
+}
+
+/* FOOTER */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+.footerInfo {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.footerAbout, .footerThanks, .footerConnect {
+    flex: 0 0 30%;
+    max-width: 25%;
+    margin: 10px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#titleAbout, #titleThanks, #titleConnect {
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footerCopyright {
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+}
+
+a {
+    color: #3A8EFF;
+    text-decoration: none;
+    display: block; /* Ensures links stack */
+    margin: 5px 0;
+}
+
+a:hover {
+    text-decoration: underline;
 }
