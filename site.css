@@ -271,4 +271,94 @@ a:hover {
     text-decoration: underline;
 }
 
+/* MOBILE SCREENS */
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+    .mainSection {
+        padding: 30px 25px 30px 25px; /* Top, Right, Bottom, Left */
+    }
 
+    #mainheader .logo {
+        height: 30px;
+    }
+
+    #main-heading {
+        font-size: 24px;
+    }
+
+    .form {
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+
+    input, .action-button {
+        width: 100%;
+        margin: 3px 0;
+        border-radius: 10px;
+    }
+
+    .ticket-list {
+    padding: 20px;
+    }
+
+    .cardContainer {
+        flex-direction: column;
+        min-width: auto;
+        margin: 20;
+        display: flex;
+        align-items: center; 
+        position: relative;  
+        height: 200px;        
+        border: 1px solid #ccc; 
+    }
+
+    .ticketPrice {
+        position: absolute;
+        top: 10px;   
+        text-align: center;
+        width: 100%;
+        border-right: none;
+      }
+
+    .tripDetails {
+        width: 100%;
+        justify-content: space-between;
+        padding: 20 px;
+    }
+
+    .tripDetailShell {
+        width: 100%;
+        align-self: flex-end;
+    }
+    
+    .ticketDetailsOneWay, .ticketDetailsRoundTrip {
+        padding: 20px 20px 20px 20px; /* Top, Right, Bottom, Left */
+        width: 100%;
+    }
+
+    .airportName {
+     font-size: 10px;
+    }
+
+   .durationAirportDisplay {
+   justify-content: space-between;
+   flex: 1; 
+   }
+
+    .footerInfo {
+        flex-direction: column; 
+        align-items: right;
+    }
+
+    .footerAbout, .footerThanks, .footerConnect {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #ticketList .sticky {
+        width: 100%;
+        margin-top: 300px;
+    }
+}
