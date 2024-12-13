@@ -5,7 +5,7 @@ Flights on Lite aims to make travel accessible to everyone by focusing on low-co
 ## Instructions for the reviewer to run your project
 
 ### Online Version
-0. Go to https://anastasia-bogdanova.github.io/FlightsOnLite
+0. Go to https://anastasia-bogdanova.github.io/flightsOnLite
 1. Enter airport names, type at least 2 first letters.
 2. Select the airport from the dropdown.
 3. Select departure date by clicking on the calendar icon.
