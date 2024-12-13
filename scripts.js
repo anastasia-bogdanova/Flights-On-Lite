@@ -146,7 +146,15 @@ const getData = async () => {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         let data = await res.json();
+
+        // Error:no direct flights 
+        if (!data.data || data.data.length === 0) {
+            alert('There are no direct flights for the selected dates. Please try again by updating destination or dates.');
+            return;
+         }
+
         renderTicketCards(data.data); // Render the tickets
+       
         if (!res.ok) {
             console.log(data.description);
             return;
