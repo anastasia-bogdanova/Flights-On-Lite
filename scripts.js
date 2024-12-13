@@ -34,6 +34,88 @@ const startTokenRefresh = () => {
 };
 startTokenRefresh();
 
+// Get input elements
+const originInput = document.querySelector('input[name="originLocationCode"]');
+const destinationInput = document.querySelector('input[name="destinationLocationCode"]');
+
+// Create suggestion boxes
+function createSuggestionBox(input) {
+    const suggestionBox = document.createElement('div');
+    suggestionBox.className = 'suggestion-box';
+    input.parentNode.insertBefore(suggestionBox, input.nextSibling);
+    return suggestionBox;
+}
+
+const originSuggestionBox = createSuggestionBox(originInput);
+const destinationSuggestionBox = createSuggestionBox(destinationInput);
+
+// Search cities function
+async function searchCities(keyword, suggestionBox, input) {
+    if (keyword.length < 2) {
+        suggestionBox.style.display = 'none';
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=${keyword}&page[limit]=5`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+        );
+
+        const data = await response.json();
+        suggestionBox.innerHTML = '';
+
+        if (data.data && data.data.length > 0) {
+            data.data.forEach(city => {
+                const suggestion = document.createElement('div');
+                suggestion.className = 'suggestion-item';
+                suggestion.textContent = `${city.name} (${city.iataCode})`;
+
+                suggestion.onclick = () => {
+                    input.value = city.iataCode;
+                    suggestionBox.style.display = 'none';
+                };
+
+                suggestionBox.appendChild(suggestion);
+            });
+            suggestionBox.style.display = 'block';
+        } else {
+            suggestionBox.style.display = 'none';
+        }
+    } catch (error) {
+        console.error('Error searching cities:', error);
+        suggestionBox.style.display = 'none';
+    }
+}
+
+// Setup autocomplete
+function setupAutocomplete(input, suggestionBox) {
+    let timeoutId = null;
+
+    input.addEventListener('input', (e) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+            searchCities(e.target.value, suggestionBox, input);
+        }, 300);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target !== input) {
+            suggestionBox.style.display = 'none';
+        }
+    });
+}
+
+// Initialize autocomplete for both inputs
+setupAutocomplete(originInput, originSuggestionBox);
+setupAutocomplete(destinationInput, destinationSuggestionBox);
+
 // Sticky Behavior
 const searchButton = document.getElementById('search-button');
 const mainHeading = document.getElementById('main-heading');

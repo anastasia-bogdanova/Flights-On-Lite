@@ -91,6 +91,31 @@ input:focus {
     background-color: #FA742D;
 }
 
+/* Autocomplete */  
+.suggestion-box {
+    position: absolute;
+    width: 10%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 1000;
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f5f5f5;
+}
+
+
+
 /* SEARCH RESULT TILE*/
 
 #top-section {
@@ -262,7 +287,7 @@ footer {
 a {
     color: #3A8EFF;
     text-decoration: none;
-    display: block; /* Ensures links stack */
+    display: block;
     margin: 5px 0;
 }
 
@@ -275,7 +300,11 @@ a:hover {
     body {
         padding: 0;
     }
-    
+    .suggestion-box {
+
+    width: 80%;
+
+    }
     .mainSection {
         padding: 30px 25px 30px 25px; /* Top, Right, Bottom, Left */
     }
@@ -360,7 +389,7 @@ a:hover {
     }
 
 #mainSection.sticky #main-heading {
-    display: none; /* Hide the heading when sticky on mobile */
+    display: none;
 }
 
     .mainSection.sticky input {

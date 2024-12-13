@@ -4,21 +4,26 @@ Flights on Lite aims to make travel accessible to everyone by focusing on low-co
 
 ## Instructions for the reviewer to run your project
 
+### Online Version
 0. Go to https://anastasia-bogdanova.github.io/FlightsOnLite
-1. Enter airport names using 3 letter code.
-2. Enter dates in the format YYYY-MM-DD.
-3. Enter number of adults.
-4. Click on the search button.
+1. Enter airport names, type at least 2 first letters.
+2. Select the airport from the dropdown.
+3. Select departure date by clicking on the calendar icon.
+4. Select return date by clicking on the following calendar icon.
+5. Enter number of adults or use arrows.
+6. Click on the search button.
 
-OR Run Locally
+### Run Locally
 0. Clone the project repository: git clone https://link-to-project
 1. Navigate to the project directory: cd FlightsOnLite
 2. Open the project in your code editor (e.g., Visual Studio Code): code .
 3. Open your browser to access the Flights on Lite page.
-4. Enter airport names using 3 letter code.
-5. Enter dates in the format YYYY-MM-DD.
-6. Enter number of adults.
-7. Click on the search button.
+4. Enter airport names, type at least 2 first letters.
+5. Select the airport from the dropdown.
+6. Select departure date by clicking on the calendar icon.
+7. Select return date by clicking on the following calendar icon.
+8. Enter number of adults or use arrows.
+9. Click on the search button.
 
 ## Features
 
