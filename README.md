@@ -6,7 +6,7 @@ Flights on Lite aims to make travel accessible to everyone by focusing on low-co
 
 ### Online Version
 0. Go to https://anastasia-bogdanova.github.io/flightsOnLite
-1. Enter airport names, type at least 2 first letters.
+1. Enter airport names, type at least 2 first letters. NYC and Miami are pretty popular.
 2. Select the airport from the dropdown.
 3. Select departure date by clicking on the calendar icon.
 4. Select return date by clicking on the following calendar icon.
@@ -18,25 +18,25 @@ Flights on Lite aims to make travel accessible to everyone by focusing on low-co
 0. Clone the project repository: git clone https://link-to-project
 1. Navigate to the project directory: cd FlightsOnLite
 2. Open the project in your code editor (e.g., Visual Studio Code): code .
-3. Open your browser to access the Flights on Lite page.
+3. Open your browser to access the "Flights on Lite" page.
 4. Enter airport names, type at least 2 first letters.
 5. Select the airport from the dropdown.
 6. Select departure date by clicking on the calendar icon.
 7. Select return date by clicking on the following calendar icon.
 8. Enter number of adults or use arrows.
 9. Click on the search button.
-7. See a list of direct flights returned sorted from low to high price.
+10. See a list of direct flights returned sorted from low to high price.
 
 ## Features
 
 ##### Use arrays, objects, and maps to store and retrieve information.
 Flights on Lite uses an array of objects to manage flight data retrieved from the API. Each object represents an individual flight, including details like airline, price, and departure time.
 
-#### Analyze text and display useful information about it.
-Flights on Lite gets data in the ISO format and converts it in a time and date. The time and date are displayed in diffent places allowing user to focus on the most important information.
+#### Analyze data that is stored in arrays and display information about it.
+Flights on Lite gets data in the ISO format and converts it to time and date. The time and date are displayed in different places, allowing users to focus on the most important information.
 
-#### Create a function that accepts two or more input parameters and returns a value.
-The project have functions that take multiple input parameters and return a meaningful calculated value, such as a flight cost, departure time, and arrival time.
+#### Convert user input between two formats and display the result.
+The project has functions that take departure and arrival dates, get information from the API in ISO format to display departure and arrival times shown in 24-hour format.
 
-##### Retrieve and display data from a third-party API.
-The page retrieves live flight data from a third-party API to display available low-cost flights.
+##### Retrieve and display data from a third-party API and  and use it to display information.
+The page retrieves live flight data from the Amadeus API to display available direct flights. It also uses the Amadeus Airport & City Search API to provide autocomplete suggestions as users type airport names, requiring at least 2 characters to start showing matching airports.

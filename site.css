@@ -123,16 +123,6 @@ input:focus {
     margin: 0;
 }
 
-.ticket-list {
-    background-color: #EFF1F4;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding-top: 370px;
-    padding-bottom: 2000px;
-}
-
 .cardContainer {
     min-width: 929px;
     min-height: 251px;
@@ -294,6 +284,16 @@ a:hover {
     text-decoration: underline;
 }
 
+.mainSection.sticky + .ticket-list {
+    background-color: #EFF1F4;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 370px;
+    padding-bottom: 2000px;
+}
+
 /* MOBILE SCREENS */
 @media (max-width: 600px) {
     body {
@@ -321,10 +321,6 @@ a:hover {
         width: 100%;
         margin: 3px 0;
         border-radius: 10px;
-    }
-
-    .ticket-list {
-        padding: 20px;
     }
 
     .cardContainer {

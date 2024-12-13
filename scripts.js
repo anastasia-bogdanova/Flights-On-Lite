@@ -152,8 +152,9 @@ const getData = async () => {
             alert('There are no direct flights for the selected dates. Please try again by updating destination or dates.');
             return;
          }
-
-        renderTicketCards(data.data); // Render the tickets
+        
+         // Render the tickets
+        renderTicketCards(data.data); 
        
         if (!res.ok) {
             console.log(data.description);
@@ -178,9 +179,9 @@ function renderTicketCards(tickets) {
     }
 
     // Clear the container
-    cardContainer.innerHTML = ''; 
+    cardContainer.innerHTML = '';
 
-    if (tickets && tickets.length > 0) {
+    if (tickets && tickets.length > 0) {  
         mainHeading.style.display = 'none';
         searchButton.textContent = 'Try Again';
         searchButton.classList.add('tryAgain');
@@ -188,7 +189,7 @@ function renderTicketCards(tickets) {
         formMobile.classList.add('sticky');
         mainSection.style.padding = '20px 15px 20px 20px';
         ticketList.style.padding = '70px 15px 20px 25px';
-        
+
         searchButton.onclick = () => {
             window.location.href = 'index.html';
         };
