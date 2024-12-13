@@ -12,6 +12,7 @@ Flights on Lite aims to make travel accessible to everyone by focusing on low-co
 4. Select return date by clicking on the following calendar icon.
 5. Enter number of adults or use arrows.
 6. Click on the search button.
+7. See a list of direct flights returned sorted from low to high price.
 
 ### Run Locally
 0. Clone the project repository: git clone https://link-to-project
@@ -24,6 +25,7 @@ Flights on Lite aims to make travel accessible to everyone by focusing on low-co
 7. Select return date by clicking on the following calendar icon.
 8. Enter number of adults or use arrows.
 9. Click on the search button.
+7. See a list of direct flights returned sorted from low to high price.
 
 ## Features
 

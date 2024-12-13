@@ -122,6 +122,7 @@ const mainHeading = document.getElementById('main-heading');
 const mainSection = document.querySelector('.mainSection');
 const ticketList = document.getElementById('ticketList');
 const formMobile = document.querySelector('.form');
+
 // First select the form
 const formEl = document.querySelector('.form');
 formEl.addEventListener('submit', event => {
@@ -135,7 +136,7 @@ const params = new URLSearchParams(formData);
 for (const [key, value] of formData.entries()) {
 if (value) { // Check if the value is not empty
     params.append(key, value);
-}
+ }
 }
 
 

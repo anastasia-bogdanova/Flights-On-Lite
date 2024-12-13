@@ -24,12 +24,11 @@ body {
 /* Main Section */
 .mainSection {
     background-color: #3A8EFF;
-    padding: 80px 15px 300px 25px; /* Top, Right, Bottom, Left */
+    padding: 80px 15px 300px 25px;
     margin: 0;
 }
 
 .sticky {
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
@@ -120,7 +119,7 @@ input:focus {
 
 #top-section {
     background-color: #3A8EFF;
-    padding: 80px 15px 200px 25px; /* Top, Right, Bottom, Left */
+    padding: 80px 15px 200px 25px;
     margin: 0;
 }
 
@@ -246,7 +245,7 @@ input:focus {
         background-color: #3A8EFF;
         border: 2px solid white;
         text-transform: uppercase;
-    }/* or your preferred color */
+    }
 
 /* FOOTER */
 footer {
@@ -306,7 +305,7 @@ a:hover {
 
     }
     .mainSection {
-        padding: 30px 25px 30px 25px; /* Top, Right, Bottom, Left */
+        padding: 30px 25px 30px 25px;
     }
 
     #main-heading {
@@ -325,7 +324,6 @@ a:hover {
     }
 
     .ticket-list {
-        padding-top: 250px;
         padding: 20px;
     }
 
@@ -360,7 +358,7 @@ a:hover {
     }
     
     .ticketDetailsOneWay, .ticketDetailsRoundTrip {
-        padding: 20px 20px 20px 20px; /* Top, Right, Bottom, Left */
+        padding: 20px 20px 20px 20px;
         width: 100%;
     }
 
@@ -384,111 +382,50 @@ a:hover {
     }
 
     /* Sticky form on mobile */
-    #mainSection.sticky {
+    .sticky #mainSection {
         padding: 5px;
     }
+         .sticky .form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: row;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+    
+        .sticky input {
+            width: calc(50% - 5px);
+            height: 40px;       
+            font-size: 14px;  
+            padding: 8px;
+            border: none;
+            outline: none;  
+            margin: 0;
+        }
+    
+        .sticky #departure,
+        .sticky #arrival,
+        .sticky #departure-date,
+        .sticky #return-date {
+            width: calc(50% - 5px);
+            flex: 0 0 calc(50% - 5px);
+        }
 
-#mainSection.sticky #main-heading {
-    display: none;
-}
+        .sticky #adults {
+            width: calc(20% - 5px);
+            flex: 0 0 calc(20% - 5px);
+        }
+        
+        .sticky .action-button.tryAgain  {
+            width: calc(70% - 5px);
+            height: 40px;
+            margin: 0;
+        }
 
-    .mainSection.sticky input {
-        height: 40px;       
-        font-size: 12px;  
-        padding: 5px;
-        margin: 0;
-        border-radius: 5px;
-    }
-
-    .mainSection.sticky input {
-        height: 40px;       
-        font-size: 12px;  
-        padding: 5px;
-        margin: 0;
-        border-radius: 5px;
-    }
-
-    /* First line */
-    .mainSection.sticky #departure,
-    .mainSection.sticky #destination {
-        width: calc(50% - 5px);
-    }
-
-    .mainSection.sticky #departure-date,
-    .mainSection.sticky #return-date {
-        width: calc(50% - 5px);
-    }
-
-    /* Third line */
-    .mainSection.sticky #adults {
-        width: 25%;  
-        margin-right: 10px; 
-    }
-
-    .sticky #departure-date,
-    .sticky #return-date {
-        width: calc(50% - 5px);
-    }
-
-.sticky #adults {
-    width: 25%;  
-    margin-right: 10px; 
-}
-
-.sticky .tryAgain {
-    width: calc(70% - 5px); 
-}
-
-    .sticky #ticketList {
-        width: 100%;
-        margin-top: 195px;
-    }
-
-    .form.sticky {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        background-color: #3A8EFF;
-        z-index: 1000;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        gap: 5px;
-    }
-
-    .form.sticky input {
-        height: 40px;       
-        font-size: 12px;  
-        padding: 5px;
-        margin: 0;
-        border-radius: 5px;
-    }
-
-    /* First line */
-    .form.sticky #departure,
-    .form.sticky #destination {
-        width: calc(50% - 5px);
-    }
-
-    /* Second line */
-    .form.sticky #departure-date,
-    .form.sticky #return-date {
-        width: calc(50% - 5px);
-    }
-
-    /* Third line */
-    .form.sticky #adults {
-        width: calc(50% - 5px);
-    }
-
-    .form.sticky .action-button {
-        width: calc(50% - 5px);
-        height: 40px;
-        font-size: 12px;
-        padding: 5px;
+        .mainSection.sticky + .ticket-list {
+            margin-top: 90px;
     }
 }
