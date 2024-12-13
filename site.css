@@ -91,9 +91,6 @@ input:focus {
     background-color: #FA742D;
 }
 
-/* Contact Section */
-
-
 /* SEARCH RESULT TILE*/
 
 #top-section {
@@ -101,20 +98,14 @@ input:focus {
     padding: 80px 15px 200px 25px; /* Top, Right, Bottom, Left */
     margin: 0;
 }
-.search-param-section {
-    background-color: #3A8EFF;
-    padding: 20px 15px 20px 25px; /* Top, Right, Bottom, Left */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
+
 .ticket-list {
     background-color: #EFF1F4;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
+    padding-top: 370px;
     padding-bottom: 2000px;
 }
 
@@ -224,6 +215,14 @@ input:focus {
     justify-content: space-between;
 }
 
+.tryAgain {
+    cursor: pointer;
+        margin: 10px 0;
+        background-color: #3A8EFF;
+        border: 2px solid white;
+        text-transform: uppercase;
+    }/* or your preferred color */
+
 /* FOOTER */
 footer {
     background-color: #333;
@@ -276,12 +275,9 @@ a:hover {
     body {
         padding: 0;
     }
+    
     .mainSection {
         padding: 30px 25px 30px 25px; /* Top, Right, Bottom, Left */
-    }
-
-    #mainheader .logo {
-        height: 30px;
     }
 
     #main-heading {
@@ -300,7 +296,8 @@ a:hover {
     }
 
     .ticket-list {
-    padding: 20px;
+        padding-top: 250px;
+        padding: 20px;
     }
 
     .cardContainer {
@@ -357,8 +354,112 @@ a:hover {
         max-width: 100%;
     }
 
-    #ticketList .sticky {
+    /* Sticky form on mobile */
+    #mainSection.sticky {
+        padding: 5px;
+    }
+
+#mainSection.sticky #main-heading {
+    display: none; /* Hide the heading when sticky on mobile */
+}
+
+    .mainSection.sticky input {
+        height: 40px;       
+        font-size: 12px;  
+        padding: 5px;
+        margin: 0;
+        border-radius: 5px;
+    }
+
+    .mainSection.sticky input {
+        height: 40px;       
+        font-size: 12px;  
+        padding: 5px;
+        margin: 0;
+        border-radius: 5px;
+    }
+
+    /* First line */
+    .mainSection.sticky #departure,
+    .mainSection.sticky #destination {
+        width: calc(50% - 5px);
+    }
+
+    .mainSection.sticky #departure-date,
+    .mainSection.sticky #return-date {
+        width: calc(50% - 5px);
+    }
+
+    /* Third line */
+    .mainSection.sticky #adults {
+        width: 25%;  
+        margin-right: 10px; 
+    }
+
+    .sticky #departure-date,
+    .sticky #return-date {
+        width: calc(50% - 5px);
+    }
+
+.sticky #adults {
+    width: 25%;  
+    margin-right: 10px; 
+}
+
+.sticky .tryAgain {
+    width: calc(70% - 5px); 
+}
+
+    .sticky #ticketList {
         width: 100%;
-        margin-top: 300px;
+        margin-top: 195px;
+    }
+
+    .form.sticky {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #3A8EFF;
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .form.sticky input {
+        height: 40px;       
+        font-size: 12px;  
+        padding: 5px;
+        margin: 0;
+        border-radius: 5px;
+    }
+
+    /* First line */
+    .form.sticky #departure,
+    .form.sticky #destination {
+        width: calc(50% - 5px);
+    }
+
+    /* Second line */
+    .form.sticky #departure-date,
+    .form.sticky #return-date {
+        width: calc(50% - 5px);
+    }
+
+    /* Third line */
+    .form.sticky #adults {
+        width: calc(50% - 5px);
+    }
+
+    .form.sticky .action-button {
+        width: calc(50% - 5px);
+        height: 40px;
+        font-size: 12px;
+        padding: 5px;
     }
 }

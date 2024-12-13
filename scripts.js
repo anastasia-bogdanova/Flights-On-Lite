@@ -1,4 +1,3 @@
-
 // Timer to get the access token
 let token = null;
 
@@ -35,24 +34,12 @@ const startTokenRefresh = () => {
 };
 startTokenRefresh();
 
-
-// Wait 3 seconds to ensure token is fetched
-setTimeout(() => getData(params), 3000);
-
 // Sticky Behavior
 const searchButton = document.getElementById('search-button');
 const mainHeading = document.getElementById('main-heading');
 const mainSection = document.querySelector('.mainSection');
 const ticketList = document.getElementById('ticketList');
-
-searchButton.addEventListener('click', () => {
-mainHeading.style.display = 'none';
-mainSection.classList.add('sticky');
-mainSection.style.padding = '20px 15px 20px 20px';
-ticketList.style.padding = '70px 15px 20px 25px';
-});
-
-
+const formMobile = document.querySelector('.form');
 // First select the form
 const formEl = document.querySelector('.form');
 formEl.addEventListener('submit', event => {
@@ -97,67 +84,75 @@ function renderTicketCards(tickets) {
     if (!cardContainer) {
         console.log('No container found to append tickets.');
         return;
-      }
-
-// Clear the container
-cardContainer.innerHTML = ''; 
-
-tickets.forEach(ticket => {
-    console.log("Rendering ticket: ", ticket); // Log the ticket data to troubleshoot
-    const card = document.createElement('div');
-    card.classList.add('card');
-
-        // Extract ticket details 
-        const ticketPrice = ticket.price.grandTotal;
-        const departureTime = ticket.itineraries[0].segments[0].departure.at;
-        const arrivalTime = ticket.itineraries[0].segments[0].arrival.at;
-
-        const departureCity = ticket.itineraries[0].segments[0].departure.iataCode;
-        const arrivalCity = ticket.itineraries[0].segments[0].arrival.iataCode;
-
-        const returnDepartureTime = ticket.itineraries[1].segments[0].departure.at;
-        const returnArrivalTime = ticket.itineraries[1].segments[0].arrival.at;
-
-       const returnDepartureCity = ticket.itineraries[1].segments[0].departure.iataCode;
-       const returnArrivalCity = ticket.itineraries[1].segments[0].arrival.iataCode;
-
-
-
-     //Format Dates
-    function formatDate(isoDate) {
-    const date = new Date(isoDate);
-    const options = { 
-        weekday: "short", 
-        month: "short", 
-        day: "2-digit"
-    };
-    return date.toLocaleDateString("en-US", options);
     }
 
-    const formattedDepartureDate = formatDate(departureTime);
-    const formattedArrivalDate = formatDate(arrivalTime);
-    const formatedReturnDepartureDate = formatDate(returnDepartureTime);
-    const formatedReturnArrivalDate = formatDate(returnArrivalTime);
-    
-    //Format Duration
-    function formatTime(isoDate) {
-        const time = new Date(isoDate);
-        const options = { 
-            hour: "2-digit",
-            minute: "2-digit",
-            hourCycle: "h23"
+    // Clear the container
+    cardContainer.innerHTML = ''; 
+
+    if (tickets && tickets.length > 0) {
+        mainHeading.style.display = 'none';
+        searchButton.textContent = 'Try Again';
+        searchButton.classList.add('tryAgain');
+        mainSection.classList.add('sticky');
+        formMobile.classList.add('sticky');
+        mainSection.style.padding = '20px 15px 20px 20px';
+        ticketList.style.padding = '70px 15px 20px 25px';
+        
+        searchButton.onclick = () => {
+            window.location.href = 'index.html';
         };
-        return time.toLocaleTimeString("en-US", options);
+
+        //Format Dates
+        function formatDate(isoDate) {
+            const date = new Date(isoDate);
+            const options = { 
+                weekday: "short", 
+                month: "short", 
+                day: "2-digit"
+            };
+            return date.toLocaleDateString("en-US", options);
+        }
+        
+        //Format Time
+        function formatTime(isoDate) {
+            const time = new Date(isoDate);
+            const options = { 
+                hour: "2-digit",
+                minute: "2-digit",
+                hourCycle: "h23"
+            };
+            return time.toLocaleTimeString("en-US", options);
         }
 
-    const formattedDepartureTime = formatTime(departureTime);
-    const formattedArrivalTime = formatTime(arrivalTime);
-    const formatedReturnDepartureTime = formatTime(returnDepartureTime);
-    const formatedReturnArrivalTime = formatTime(returnArrivalTime);
+        tickets.forEach(ticket => {
+            console.log("Rendering ticket: ", ticket);
+            const card = document.createElement('div');
+            card.classList.add('card');
 
+            // Extract ticket details 
+            const ticketPrice = ticket.price.grandTotal;
+            const departureTime = ticket.itineraries[0].segments[0].departure.at;
+            const arrivalTime = ticket.itineraries[0].segments[0].arrival.at;
+            const departureCity = ticket.itineraries[0].segments[0].departure.iataCode;
+            const arrivalCity = ticket.itineraries[0].segments[0].arrival.iataCode;
+            const returnDepartureTime = ticket.itineraries[1].segments[0].departure.at;
+            const returnArrivalTime = ticket.itineraries[1].segments[0].arrival.at;
+            const returnDepartureCity = ticket.itineraries[1].segments[0].departure.iataCode;
+            const returnArrivalCity = ticket.itineraries[1].segments[0].arrival.iataCode;
 
-        // Card structure
-        card.innerHTML = `
+            // Format all dates and times
+            const formattedDepartureDate = formatDate(departureTime);
+            const formattedArrivalDate = formatDate(arrivalTime);
+            const formatedReturnDepartureDate = formatDate(returnDepartureTime);
+            const formatedReturnArrivalDate = formatDate(returnArrivalTime);
+            
+            const formattedDepartureTime = formatTime(departureTime);
+            const formattedArrivalTime = formatTime(arrivalTime);
+            const formatedReturnDepartureTime = formatTime(returnDepartureTime);
+            const formatedReturnArrivalTime = formatTime(returnArrivalTime);
+
+            // Card structure
+            card.innerHTML = `
     <div class="cardContainer" id="cardContainerId">
         <div class="ticketPrice">
          <div class="priceLabel">$${ticketPrice}</div>
@@ -208,9 +203,10 @@ tickets.forEach(ticket => {
         </div>
     </div> `;
 
-        // Append the card to the container
-        cardContainer.appendChild(card);
-    });
+            // Append the card to the container
+            cardContainer.appendChild(card);
+        });
+    }
 }
 
 
